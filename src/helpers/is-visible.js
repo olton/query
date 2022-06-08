@@ -1,0 +1,1 @@
+export const isVisible = (elem) => !!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length )

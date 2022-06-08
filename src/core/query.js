@@ -4,6 +4,9 @@ import {isArrayLike} from "../helpers/is-array-like.js"
 import {parseHTML} from "../helpers/parse-html.js";
 import {Attr} from "../plugins/attr.js";
 import {Class} from "../plugins/class.js";
+import {Contains} from "../plugins/contains.js";
+import {Scroll} from "../plugins/scroll.js";
+import {Css} from "../plugins/css.js";
 
 const defaultOptions = {
     uid: 'uid',
@@ -117,7 +120,7 @@ class Query extends Array {
 
 Query.use = (...mixins) => Object.assign(Query.prototype, ...mixins)
 
-Query.use(Attr, Class)
+Query.use(Attr, Class, Contains, Css, Scroll)
 
 export {
     Query
