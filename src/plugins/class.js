@@ -5,6 +5,8 @@ export const Class = {
     addClass(){},
     removeClass(){},
     toggleClass(){},
+    containsClass(){},
+    itemClass(){},
 
     hasClass(cls){
         let result = false
@@ -49,7 +51,7 @@ export const Class = {
     }
 }
 
-const methods = ['add', 'remove', 'toggle']
+const methods = ['add', 'remove', 'toggle', 'contains', 'item']
 
 each(methods, (_, m) => {
     Class[`${m}Class`] = function(cls) {
