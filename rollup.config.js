@@ -24,7 +24,7 @@ export default [
         ]
     },
     {
-        input: 'src/query.js',
+        input: 'src/index.js',
         output: [
             {
                 file: 'dist/query.js',

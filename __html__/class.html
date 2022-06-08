@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            border: 1px solid gray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .red {
+            background: red;
+        }
+        .green {
+            background: green;
+        }
+        .blue {
+            background: blue;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1" class="box">1</div>
+    <div id="box2" class="box green">2</div>
+    <div id="box3" class="box blue">2</div>
+    <script src="../lib/query.js"></script>
+    <script>
+        const box1 = $("#box1")
+        const box2 = $("#box2")
+        const box3 = $("#box3")
+
+        box1.addClass("red")
+        box2.removeClass("green")
+        box3.removeClassBy("bl")
+    </script>
+</body>
+</html>

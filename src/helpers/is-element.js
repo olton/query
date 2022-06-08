@@ -1,0 +1,1 @@
+export const isElement = obj => obj.nodeType
