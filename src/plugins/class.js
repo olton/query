@@ -31,16 +31,18 @@ export const Class = {
     },
 
     classes(index = 0, asArray = true){
-        return this.length === 0 ? undefined : asArray ? str2array(this[0].className) : this[0].className
+        return this.length === 0 ? undefined : asArray ? str2array(this[index].className) : this[index].className
+    },
+
+    classesCount(index = 0){
+        return this.length === 0 ? undefined : this[index].classList.length
     },
 
     removeClassBy(mask){
         return this.each((_, el) => {
-            const $el = $(el)
-            const classes = $el.classes(0, true)
-            $.each(classes, (_, c) => {
+            $.each(str2array(el.className), (_, c) => {
                 if (c.includes(mask)) {
-                    $el.removeClass(c)
+                    el.classList.remove(c)
                 }
             })
         })
@@ -55,7 +57,6 @@ each(methods, (_, m) => {
         return this.each((_, el)=>{
             const hasClassList = typeof el.classList !== "undefined"
             each(str2array(cls),(_, c) => {
-                console.log(`${m}Class ${c}`)
                 if (hasClassList) el.classList[m](c)
             })
         })
