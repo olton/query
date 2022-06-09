@@ -1,6 +1,3 @@
-import {camelCase} from "../helpers/camel-case.js";
-import {parseData} from "../helpers/data-attribute.js";
-
 export class DataSet {
     constructor() {
         this._dataset = new Map()
