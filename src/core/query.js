@@ -9,6 +9,8 @@ import {Scroll} from "../plugins/scroll.js";
 import {Css} from "../plugins/css.js";
 import {Events} from "../plugins/events.js";
 import {QueryDataSet} from "./data";
+import {Script} from "../plugins/script.js";
+import {Manipulations} from "../plugins/manipulations.js";
 
 const defaultOptions = {
     uid: 'uid',
@@ -66,9 +68,9 @@ class Query extends Array {
             return
         }
 
-        if (isArrayLike(this.selector)) {
+        if (typeof this.selector === "object" && isArrayLike(this.selector)) {
             each(this.selector, (key, val) => {
-                this.push(val)
+                this.push(val instanceof Query ? val[0] : val)
             })
             return
         }
@@ -122,7 +124,7 @@ class Query extends Array {
 
 Query.use = (...mixins) => Object.assign(Query.prototype, ...mixins)
 
-Query.use(QueryDataSet, Attr, Class, Contains, Css, Scroll, Events)
+Query.use(QueryDataSet, Attr, Class, Contains, Css, Scroll, Events, Script, Manipulations)
 
 const query = (...rest) => new Query(...rest)
 

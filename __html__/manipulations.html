@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .outer {
+            border: 1px solid red;
+            padding: 10px;
+        }
+        .inner {
+            border: 1px solid blue;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="div">123</div>
+    <script src="../lib/query.js"></script>
+    <script>
+        // console.log($("<div class='outer'>321</div>"))
+
+        $("#div").wrap("<div class='outer'><div class='inner'></div></div>")
+        // $("#div").wrap($("<div>").addClass('outer'))
+    </script>
+</body>
+</html>

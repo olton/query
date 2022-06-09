@@ -41,6 +41,13 @@ export class DataSet {
         }
     }
 
+    removeAll(element){
+        if (!this._dataset.has(element)) {
+            return
+        }
+        this._dataset.delete(element)
+    }
+
     attr(elem, key, data){
         if (elem.nodeType !== 1 || !key) {
             return undefined

@@ -3,6 +3,7 @@ import {query} from "./query.js"
 import {DollarEvents} from "../plugins/events.js";
 import {matches} from "../helpers/matches.js";
 import {DataSet} from "./data.js";
+import {appendScript} from "../plugins/script.js";
 
 const $ = query
 
@@ -54,6 +55,8 @@ $.script = function(el, context = document.body){
 }
 
 Object.assign($, DollarEvents)
+
+$.script = appendScript
 
 $.noop = () => {}
 $.noop_true = () => true
