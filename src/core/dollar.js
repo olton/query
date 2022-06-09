@@ -6,7 +6,8 @@ import {DataSet} from "./data.js"
 import {appendScript} from "../plugins/script.js"
 import {Serialize} from "../plugins/serialize.js"
 import {isLocalhost} from "../helpers/is-localhost.js"
-import {isTouchable} from "../helpers/is-touchable.js";
+import {isTouchable} from "../helpers/is-touchable.js"
+import {exec} from "../helpers/exec.js"
 
 const $ = query
 
@@ -70,6 +71,7 @@ $.script = appendScript
 $.noop = () => {}
 $.noop_true = () => true
 $.noop_false = () => false
+$.exec = exec
 
 $.dark = globalThis.matchMedia && globalThis.matchMedia('(prefers-color-scheme: dark)').matches
 
