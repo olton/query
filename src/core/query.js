@@ -11,6 +11,7 @@ import {Events} from "../plugins/events.js";
 import {QueryDataSet} from "./data";
 import {Script} from "../plugins/script.js";
 import {Manipulations} from "../plugins/manipulations.js";
+import {Utils} from "../plugins/utils.js";
 
 const defaultOptions = {
     uid: 'uid',
@@ -124,7 +125,7 @@ class Query extends Array {
 
 Query.use = (...mixins) => Object.assign(Query.prototype, ...mixins)
 
-Query.use(QueryDataSet, Attr, Class, Contains, Css, Scroll, Events, Script, Manipulations)
+Query.use(QueryDataSet, Attr, Class, Contains, Css, Scroll, Events, Script, Manipulations, Utils)
 
 const query = (...rest) => new Query(...rest)
 

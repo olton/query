@@ -1,9 +1,12 @@
 import {each} from "../helpers/each.js"
 import {query} from "./query.js"
-import {DollarEvents} from "../plugins/events.js";
-import {matches} from "../helpers/matches.js";
-import {DataSet} from "./data.js";
-import {appendScript} from "../plugins/script.js";
+import {DollarEvents} from "../plugins/events.js"
+import {matches} from "../helpers/matches.js"
+import {DataSet} from "./data.js"
+import {appendScript} from "../plugins/script.js"
+import {Serialize} from "../plugins/serialize.js"
+import {isLocalhost} from "../helpers/is-localhost.js"
+import {isTouchable} from "../helpers/is-touchable.js";
 
 const $ = query
 
@@ -54,7 +57,13 @@ $.script = function(el, context = document.body){
     })
 }
 
-Object.assign($, DollarEvents)
+Object.assign($, DollarEvents, Serialize)
+Object.assign($, {
+    device: (/android|wearos|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase())),
+    localhost: isLocalhost(),
+    isLocalhost: isLocalhost,
+    touchable: isTouchable(),
+})
 
 $.script = appendScript
 
@@ -62,7 +71,7 @@ $.noop = () => {}
 $.noop_true = () => true
 $.noop_false = () => false
 
-globalThis.query = $
+$.dark = globalThis.matchMedia && globalThis.matchMedia('(prefers-color-scheme: dark)').matches
 
 let _$ = globalThis.$
 

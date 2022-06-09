@@ -29,7 +29,7 @@ export const DollarEvents = {
     events: [],
     eventHooks: {},
     eventUID: -1,
-    
+
     ready(fn, op = false){
         return $(fn, op)
     },
