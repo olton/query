@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="button">Click</button>
+    <div id="div-button">
+        <button>Click</button>
+    </div>
+    <script src="../lib/query.js"></script>
+    <script>
+        $("#button").on("click", () => {
+            alert("Button clicked!")
+        })
+        $("#div-button").on("click", "button", () => {
+            alert("Button inside a div clicked!")
+        })
+    </script>
+</body>
+</html>

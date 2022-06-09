@@ -42,7 +42,7 @@ export const Class = {
 
     removeClassBy(mask){
         return this.each((_, el) => {
-            $.each(str2array(el.className), (_, c) => {
+            each(str2array(el.className), (_, c) => {
                 if (c.includes(mask)) {
                     el.classList.remove(c)
                 }

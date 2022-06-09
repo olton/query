@@ -35,9 +35,7 @@ export const Css = {
         if (undef(name) || name === "all") {
             return getComputedStyle(el, pseudo)
         } else {
-            const result = {}, names = name.split(", ").map(function(el){
-                return (""+el).trim()
-            })
+            const result = {}, names = str2array(name, ",")
 
             if (names.length === 1)  {
                 return this._getStyle(el, names[0], pseudo)

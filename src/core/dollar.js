@@ -1,12 +1,13 @@
 import {each} from "../helpers/each.js"
-import {Query} from "./query.js"
-import {undef} from "../helpers/undef.js"
-import {camelCase} from "../helpers/camel-case.js"
-import {str2array} from "../helpers/str-to-array.js"
+import {query} from "./query.js"
+import {DollarEvents} from "../plugins/events.js";
+import {matches} from "../helpers/matches.js";
+import {DataSet} from "./data.js";
 
-const $ = (s, c, o) => new Query(s, c, o)
+const $ = query
 
-$.matches = Element.prototype.matches || Element.prototype["matchesSelector"] || Element.prototype["webkitMatchesSelector"] || Element.prototype["mozMatchesSelector"] || Element.prototype["msMatchesSelector"] || Element.prototype["oMatchesSelector"]
+$.dataset = new DataSet()
+$.matches = matches
 $.html = $('html')
 $.doctype = $("doctype")
 $.head = $('head')
@@ -52,120 +53,7 @@ $.script = function(el, context = document.body){
     })
 }
 
-$.events = []
-$.eventHooks = {}
-$.eventUID = -1
-
-Object.assign($, {
-    ready(fn, op = false){
-        return this(fn, op)
-    },
-
-    load(fn, op = false){
-        return this(window).on("load", fn, op)
-    },
-
-    unload(fn, op = false){
-        return this(window).on("unload", fn, op)
-    },
-
-    beforeunload(fn, op = false){
-        if (typeof fn === "string") {
-            return this(window).on("beforeunload", function(e){
-                e.returnValue = fn
-                return fn
-            }, op)
-        } else {
-            return this(window).on("beforeunload", fn, op)
-        }
-    },
-
-    setEventHandler: function({element, event, handler, selector, ns, id, options} = args){
-        let i, freeIndex = -1, eventObj, resultIndex
-        if (this.events.length > 0) {
-            for(i = 0; i < this.events.length; i++) {
-                if (this.events[i].handler === null) {
-                    freeIndex = i
-                    break
-                }
-            }
-        }
-
-        eventObj = {
-            element,
-            event,
-            handler,
-            selector,
-            ns,
-            id,
-            options
-        }
-
-        if (freeIndex === -1) {
-            this.events.push(eventObj)
-            resultIndex = this.events.length - 1
-        } else {
-            this.events[freeIndex] = eventObj
-            resultIndex = freeIndex
-        }
-
-        return resultIndex
-    },
-
-    getEventHandler: function(index){
-        const events = this.events
-        let handler
-
-        if (undef(events[index])) {
-            return undefined
-        }
-
-        handler = events[index].handler
-        events[index] = null
-        return handler
-    },
-
-    off: function(){
-        this.each(this.events, function(){
-            this.element.removeEventListener(this.event, this.handler, this.options)
-        })
-        this.events = []
-        return this
-    },
-
-    getEvents: function(){
-        return this.events
-    },
-
-    getEventHooks: function(){
-        return this.eventHooks
-    },
-
-    addEventHook: function(event, handler, type = "before"){
-        this.each(str2array(event), function(){
-            this.eventHooks[camelCase(type+"-"+this)] = handler
-        })
-        return this
-    },
-
-    removeEventHook: function(event, type = "before"){
-        this.each(str2array(event), (k, v) => {
-            delete this.eventHooks[camelCase(type+"-"+v)]
-        })
-        return this
-    },
-
-    removeEventHooks: function(event, type = "before"){
-        if (undef(event)) {
-            this.eventHooks = {}
-        } else {
-            this.each(str2array(event), (k, v) => {
-                delete this.eventHooks[camelCase(type+"-"+v)]
-            })
-        }
-        return this
-    }
-})
+Object.assign($, DollarEvents)
 
 $.noop = () => {}
 $.noop_true = () => true

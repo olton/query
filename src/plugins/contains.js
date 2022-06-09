@@ -2,6 +2,7 @@ import {isArrayLike} from "../helpers/is-array-like.js"
 import {undef} from "../helpers/undef.js"
 import {each} from "../helpers/each.js";
 import {isVisible} from "../helpers/is-visible";
+import {matches} from "../helpers/matches.js";
 
 export const Contains = {
     index(sel, global = false){
@@ -104,7 +105,7 @@ export const Contains = {
 
         if (typeof  s === "string") {
             this.each(function(){
-                if ($.matches.call(this, s)) {
+                if (matches.call(this, s)) {
                     result = true
                 }
             })
@@ -148,7 +149,7 @@ export const Contains = {
     filter(fn){
         if (typeof fn === "string") {
             let sel = fn
-            fn = el => $.matches.call(el, sel)
+            fn = el => matches.call(el, sel)
         }
 
         return $([].filter.call(this, fn), undefined,{prevObj: this})
@@ -158,7 +159,7 @@ export const Contains = {
         let result = this.filter((_, i) => i % 2 === 0)
 
         if (s) {
-            result = result.filter(el => $.matches.call(el, s))
+            result = result.filter(el => matches.call(el, s))
         }
 
         return $(result, undefined, {prevObj: this})
@@ -168,7 +169,7 @@ export const Contains = {
         let result = this.filter((_, i) => i % 2 !== 0)
 
         if (s) {
-            result = result.filter((el) => $.matches.call(el, s))
+            result = result.filter((el) => matches.call(el, s))
         }
 
         return $(result, undefined,{prevObj: this})
@@ -206,7 +207,7 @@ export const Contains = {
             }
         })
 
-        res = s ? res.filter(el => $.matches.call(el, s)) : res
+        res = s ? res.filter(el => matches.call(el, s)) : res
 
         return $(res, undefined,{prevObj: this})
     },
@@ -224,7 +225,7 @@ export const Contains = {
             }
         })
 
-        res = s ? res.filter(el => $.matches.call(el, s)) : res
+        res = s ? res.filter(el => matches.call(el, s)) : res
 
         return $(res, undefined,{prevObj: this})
     },
@@ -241,7 +242,7 @@ export const Contains = {
             while (par) {
                 if (par.nodeType === 1 && !res.includes(par)) {
                     if (s) {
-                        if ($.matches.call(par, s)) {
+                        if (matches.call(par, s)) {
                             res.push(par)
                         }
                     } else {
@@ -272,7 +273,7 @@ export const Contains = {
         })
 
         if (s) {
-            res = res.filter(el => $.matches.call(el, s))
+            res = res.filter(el => matches.call(el, s))
         }
 
         return $(res, undefined,{prevObj: this})
@@ -295,7 +296,7 @@ export const Contains = {
         })
 
         if (s) {
-            res = res.filter(el => $.matches.call(el, s))
+            res = res.filter(el => matches.call(el, s))
         }
 
         return $(res, undefined,{prevObj: this})
@@ -316,7 +317,7 @@ export const Contains = {
         })
 
         if (s) {
-            res = res.filter(el => $.matches.call(el, s))
+            res = res.filter(el => matches.call(el, s))
         }
 
         return $(res, undefined,{prevObj: this})
@@ -353,7 +354,7 @@ export const Contains = {
             let el = this
             while (el) {
                 if (!el) break
-                if ($.matches.call(el, s)) {
+                if (matches.call(el, s)) {
                     res.push(el)
                     return
                 }

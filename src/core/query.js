@@ -7,6 +7,8 @@ import {Class} from "../plugins/class.js";
 import {Contains} from "../plugins/contains.js";
 import {Scroll} from "../plugins/scroll.js";
 import {Css} from "../plugins/css.js";
+import {Events} from "../plugins/events.js";
+import {QueryDataSet} from "./data";
 
 const defaultOptions = {
     uid: 'uid',
@@ -120,8 +122,11 @@ class Query extends Array {
 
 Query.use = (...mixins) => Object.assign(Query.prototype, ...mixins)
 
-Query.use(Attr, Class, Contains, Css, Scroll)
+Query.use(QueryDataSet, Attr, Class, Contains, Css, Scroll, Events)
+
+const query = (...rest) => new Query(...rest)
 
 export {
-    Query
+    Query,
+    query
 }
