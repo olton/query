@@ -5,7 +5,7 @@
   "main": "dist/query.js",
   "type": "module",
   "scripts": {
-    "prebuild": "shx rm -rf dist/* lib/* && npm test",
+    "prebuild": "shx rm -rf dist/* lib/*",
     "build": "rollup --config",
     "test": "jest"
   },

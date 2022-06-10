@@ -1,41 +1,25 @@
-import {isPlainObject} from "./is-plain-object.js"
-
-export const parseHTML = function (data, context) {
+export const parseHTML = function (html) {
     const regexpSingleTag = /^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|)$/i
-    let base, singleTag,
-        result = [], ctx, _context
+    let base, singleTag, result = [], doc
 
-    if (typeof data !== "string") {
+    if (typeof html !== "string") {
         return []
     }
 
-    data = data.trim()
-
-    ctx = document.implementation.createHTMLDocument("")
-    base = ctx.createElement( "base" )
+    doc = document.implementation.createHTMLDocument("")
+    base = doc.createElement( "base" )
     base.href = document.location.href
-    ctx.head.appendChild( base )
-    _context = ctx.body
+    doc.head.appendChild( base )
 
-    singleTag = regexpSingleTag.exec(data)
+    singleTag = regexpSingleTag.exec(html)
 
     if (singleTag) {
         result.push(document.createElement(singleTag[1]))
     } else {
-        _context.innerHTML = data
-        for(let i = 0; i < _context.childNodes.length; i++) {
-            result.push(_context.childNodes[i])
+        doc.body.innerHTML = html
+        for(let i = 0; i < doc.body.childNodes.length; i++) {
+            result.push(doc.body.childNodes[i])
         }
-    }
-
-    if (context && isPlainObject(context)) {
-        this.each(result,function(){
-            const el = this
-            for(let name in context) {
-                if (context.hasOwnProperty(name))
-                    el.setAttribute(name, context[name])
-            }
-        })
     }
 
     return result

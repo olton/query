@@ -3,11 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .red {border: 1px solid red}
+        .green {border: 1px solid green}
+    </style>
 </head>
 <body>
+    <div class="red"></div>
+    <div class="green"></div>
     <script src="../lib/query.js"></script>
     <script>
-        console.log($.html)
+        console.log($("<div>", ".red, .green").text('3'))
+        // console.log($("<div>", $(".red, .green")).text('2'))
     </script>
 </body>
 </html>
