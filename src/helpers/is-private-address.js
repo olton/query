@@ -1,0 +1,1 @@
+export const isPrivateAddress = (loc = globalThis.location.hostname) => /(^localhost)|(^127\.)|(^192\.168\.)|(^10\.)|(^172\.1[6-9]\.)|(^172\.2\d\.)|(^172\.3[0-1]\.)|(^::1$)|(^[fF][cCdD])/.test( loc )

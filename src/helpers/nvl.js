@@ -1,0 +1,1 @@
+export const nvl = (val, ifNullValue) => (val === null || typeof val === 'undefined') ? ifNullValue : val

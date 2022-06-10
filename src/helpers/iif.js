@@ -1,0 +1,1 @@
+export const iif = (cond, trueVal, falseVal) => cond ? trueVal : falseVal
