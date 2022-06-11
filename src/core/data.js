@@ -65,7 +65,7 @@ export class DataSet {
 
 export const QueryDataSet = {
     data(key, val){
-        let res, elem, data, attrs, name, i
+        let elem, data
 
         if (this.length === 0) {
             return

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red {border: 1px solid red}
+        .green {
+            border: 1px solid green;
+
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button onclick="$('.red').toggle()">Toggle Red</button>
+        <button onclick="$('.red').hide()">Hide Red</button>
+        <button onclick="$('.red').show()">Show Red</button>
+        <button onclick="$('.green').hide()">Hide Green</button>
+        <button onclick="$('.green').show()">Show Green</button>
+    </div>
+    <div class="red">red</div>
+    <div class="green" style="display: flex;">green</div>
+    <script src="../lib/query.js"></script>
+    <script>
+        // $(".red").hide()
+    </script>
+</body>
+</html>
