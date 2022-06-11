@@ -1,7 +1,5 @@
 import {each} from "../helpers/each.js"
 import {uid} from "../helpers/uid.js"
-import {isArrayLike} from "../helpers/is-array-like.js"
-import {parseHTML} from "../helpers/parse-html.js"
 import {matches} from "../helpers/matches.js"
 import {isLocalhost} from "../helpers/is-localhost.js"
 import {isTouchable} from "../helpers/is-touchable.js"
@@ -16,7 +14,6 @@ import {nvl} from "../helpers/nvl.js"
 import {iif} from "../helpers/iif.js"
 import {undef} from "../helpers/undef.js"
 import {coalesce} from "../helpers/coalesce.js"
-import {isPlainObject} from "../helpers/is-plain-object"
 import {Attr} from "../plugins/attr.js"
 import {Class} from "../plugins/class.js"
 import {Contains} from "../plugins/contains.js"
@@ -127,7 +124,7 @@ query.use({
     isVisible,
     isHidden,
     inViewport,
-    toType,
+    type: toType,
     isSelector,
     undef,
     iif,
