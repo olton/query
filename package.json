@@ -1,6 +1,6 @@
 {
   "name": "@olton/query",
-  "version": "1.0.0",
+  "version": "0.2.0",
   "description": "Query is a minimalist JavaScript library for manipulating with HTML Elements",
   "main": "dist/query.js",
   "type": "module",
