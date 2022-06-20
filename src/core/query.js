@@ -107,8 +107,8 @@ query.use({
         return document.characterSet
     },
     each: function(ctx, cb){ return each(ctx, cb) },
-    proxy: (fn, ctx) => typeof fn !== "function" ? undefined : fn.bind(ctx),
-    bind: (fn, ctx) => $.proxy(fn, ctx),
+    bind: (fn, ctx) => typeof fn !== "function" ? undefined : fn.bind(ctx),
+    proxy: (target, handler) => new Proxy(target, handler),
     device: (/android|wearos|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(navigator.userAgent.toLowerCase())),
     localhost: isLocalhost(),
     isLocalhost: isLocalhost,
