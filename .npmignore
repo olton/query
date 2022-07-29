@@ -6,3 +6,4 @@ tests
 lib
 *.bat
 *.yml
+.npmrc
