@@ -22,18 +22,5 @@ export default [
                 ]
             }
         ]
-    },
-    {
-        input: 'src/index.js',
-        output: [
-            {
-                file: 'dist/query.js',
-                format: 'esm',
-            }
-        ],
-        plugins: [
-            commonjs(),
-            babel({ babelHelpers: 'bundled' })
-        ]
     }
 ]
