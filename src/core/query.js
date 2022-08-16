@@ -145,7 +145,7 @@ Query.use({
         if (!arguments.length) {
             data = $.dataset.get(elem)
             if (!data) {
-                data = []
+                data = {}
                 for(let attr of [...elem.attributes]) {
                     const attrName = attr.name
                     if (attrName.startsWith('data-')) {
@@ -153,7 +153,7 @@ Query.use({
                             [attrName]: elem.getAttribute(attrName)
                         }
                         // data.push([attrName, elem.getAttribute(attrName)])
-                        data.push(obj)
+                        data[attrName] = elem.getAttribute(attrName)
                     }
                 }
             }
