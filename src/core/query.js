@@ -132,6 +132,50 @@ query.use({
     coalesce
 })
 
+Query.use({
+    data(key, val){
+        let elem, data
+
+        if (this.length === 0) {
+            return
+        }
+
+        elem = this[0]
+
+        if (!arguments.length) {
+            data = $.dataset.get(elem)
+            if (!data) {
+                data = []
+                for(let attr of [...elem.attributes]) {
+                    const attrName = attr.name
+                    if (attrName.startsWith('data-')) {
+                        const obj = {
+                            [attrName]: elem.getAttribute(attrName)
+                        }
+                        // data.push([attrName, elem.getAttribute(attrName)])
+                        data.push(obj)
+                    }
+                }
+            }
+            return data
+        }
+
+        if (arguments.length === 1) {
+            return $.dataset.get(elem, key) || $.dataset.attr(elem, key)
+        }
+
+        return this.each( function() {
+            $.dataset.set( this, key, val )
+        })
+    },
+
+    removeData( key ) {
+        return this.each( function() {
+            $.dataset.remove( this, key )
+        })
+    }
+})
+
 let _$ = globalThis.$
 
 query.use({
