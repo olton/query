@@ -20,7 +20,7 @@ import {Contains} from "../plugins/contains.js"
 import {Scroll} from "../plugins/scroll.js"
 import {Css} from "../plugins/css.js"
 import {Events} from "../plugins/events.js"
-import {DataSet, QueryDataSet} from "./data"
+import {DataSet} from "./data"
 import {appendScript, Script} from "../plugins/script.js"
 import {Manipulations} from "../plugins/manipulations.js"
 import {Utils} from "../plugins/utils.js"
@@ -70,7 +70,6 @@ query.use = (...mixins) => Object.assign(query, ...mixins)
 
 Query.use(
     Initiator,
-    QueryDataSet,
     Attr,
     Class,
     Contains,

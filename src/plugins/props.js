@@ -40,7 +40,7 @@ export const Props = {
         if (arguments.length === 0) {
             return this._prop('innerHTML');
         }
-        if (isArrayLike(value)) {
+        if (typeof value !== 'string' && isArrayLike(value)) {
             each(value, (_, el) => {
                 if (el instanceof HTMLElement)
                     v.push(this.outerHTML);

@@ -13,8 +13,10 @@
     <div class="green"></div>
     <script src="../lib/query.js"></script>
     <script>
-        console.log($("<div>", ".red, .green").text('3'))
-        // console.log($("<div>", $(".red, .green")).text('2'))
+        // console.log($("<div>", ".red, .green").text('3'))
+        const box = $("<div>").appendTo(".red")
+        console.log(box)
+        box.html(`123`)
     </script>
 </body>
 </html>
