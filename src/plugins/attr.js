@@ -34,6 +34,20 @@ export const Attr = {
         })
     },
 
+    hasAttr(name){
+        return !!this.attr(name)
+    },
+
+    hasAttrs(names){
+        let result = true
+        for(let name of names) {
+            if (typeof this.attr(name) === 'undefined') {
+                return false
+            }
+        }
+        return result
+    },
+
     removeAttr: function(name){
         let attributes
 

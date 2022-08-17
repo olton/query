@@ -9,14 +9,19 @@
     </style>
 </head>
 <body>
-    <div class="red"></div>
+    <div class="red" data-role="xxx"></div>
     <div class="green"></div>
     <script src="../lib/query.js"></script>
     <script>
         // console.log($("<div>", ".red, .green").text('3'))
-        const box = $("<div>").appendTo(".red")
-        console.log(box)
-        box.html(`123`)
+        // const box = $("<div>").appendTo(".red")
+        // console.log(box)
+        // box.html(`123`)
+        console.info($('.red').hasAttr('class'))
+        console.info($('.red').hasAttr('data-size'))
+        console.info($('.red').hasAttr('data-role'))
+        console.info($('.red').hasAttrs(['data-role', 'class']))
+        console.info($('.red').hasAttrs(['data-role', 'class', 'data-size']))
     </script>
 </body>
 </html>
