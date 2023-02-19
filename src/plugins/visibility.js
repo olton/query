@@ -29,7 +29,6 @@ export const Visibility = {
     show(cb){
         return this.each((_, el) => {
             const display = $(el).data('display-state')
-            console.log(display)
             el.style.display = display ? display === 'none' ? 'block' : display : ''
             if (parseInt(el.style.opacity) === 0) {
                 el.style.opacity = "1"

@@ -87,8 +87,6 @@ export const Manipulations = {
     insertBefore(){
         let elements = args(...arguments)
 
-        console.log("elements", elements, ...arguments)
-
         return this.each((index, el) => {
             each(elements, (elIndex, ch) => {
                 if (el === ch) return
