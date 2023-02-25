@@ -5,9 +5,17 @@
     <title>Title</title>
 </head>
 <body>
+    <div>
+        <div class="day">1</div>
+        <div class="day">2</div>
+        <div class="day">3</div>
+    </div>
     <script src="../lib/query.js"></script>
     <script>
-        console.log($("head").children())
+        const days = $(".day")
+        $.each(days, (i, el)=>{
+            console.log(i, el, $(el).index())
+        })
     </script>
 </body>
 </html>

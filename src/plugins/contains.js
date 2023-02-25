@@ -5,7 +5,7 @@ import {isVisible} from "../helpers/is-visible";
 import {matches} from "../helpers/matches.js";
 
 export const Contains = {
-    index(sel, global = false){
+    index(sel, global = true){
         let el, _index = -1
 
         if (this.length === 0) {
