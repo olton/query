@@ -27,9 +27,14 @@ export const Initiator = {
             return
         }
 
-        if (this.selector === 'document' || (this.selector && this.selector.nodeType && this.selector.nodeType === 9)) {
+        if (this.selector === 'document' || (this.selector && this.selector.nodeType === 9)) {
             this[0] = document
             this.length = 1
+            return
+        }
+
+        if (this.selector instanceof HTMLElement) {
+            this.push(this.selector)
             return
         }
 
@@ -37,11 +42,6 @@ export const Initiator = {
             each(this.selector, (key, val) => {
                 this.push(val instanceof Query ? val[0] : val)
             })
-            return
-        }
-
-        if (this.selector instanceof HTMLElement) {
-            this.push(this.selector)
             return
         }
 
