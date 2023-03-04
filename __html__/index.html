@@ -11,17 +11,23 @@
 <body>
     <div class="red" data-role="xxx"></div>
     <div class="green"></div>
+    <form id="form">
+        <input type="text" id="input">
+    </form>
     <script src="../lib/query.js"></script>
     <script>
         // console.log($("<div>", ".red, .green").text('3'))
         // const box = $("<div>").appendTo(".red")
         // console.log(box)
         // box.html(`123`)
-        console.info($('.red').hasAttr('class'))
-        console.info($('.red').hasAttr('data-size'))
-        console.info($('.red').hasAttr('data-role'))
-        console.info($('.red').hasAttrs(['data-role', 'class']))
-        console.info($('.red').hasAttrs(['data-role', 'class', 'data-size']))
+        // console.info($('.red').hasAttr('class'))
+        // console.info($('.red').hasAttr('data-size'))
+        // console.info($('.red').hasAttr('data-role'))
+        // console.info($('.red').hasAttrs(['data-role', 'class']))
+        // console.info($('.red').hasAttrs(['data-role', 'class', 'data-size']))
+
+        form = document.querySelector("#form")
+        console.log($(form))
     </script>
 </body>
 </html>

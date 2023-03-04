@@ -18,6 +18,9 @@
             alert("Button inside a div clicked!")
             $("#button").off("click")
         })
+        $(window).on("resize", function(){
+            $("#div-button").fire("resize")
+        })
     </script>
 </body>
 </html>
