@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .red {border: 1px solid red}
+        .green {border: 1px solid green}
+    </style>
+</head>
+<body>
+    <form id="form" action="javascript:">
+        <input type="text" id="input" name="input1" value="123">
+        <div>
+            <input type="submit">
+        </div>
+    </form>
+    <script src="../lib/query.js"></script>
+    <script>
+        console.log($.serialize(document.querySelector("#form")))
+    </script>
+</body>
+</html>

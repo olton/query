@@ -70,11 +70,11 @@ export const Serialize = {
         let result
 
         if (o.nodeName && o.nodeName === 'FORM') {
-            result = this.serializeForm(o)
+            result = Serialize.serializeForm(o)
         } else if (Array.isArray(o)) {
             result = o
         } else if (toType(o) === 'object') {
-            result = this.serializeObject(o)
+            result = Serialize.serializeObject(o)
         } else {
             result = []
         }
