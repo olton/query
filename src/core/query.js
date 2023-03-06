@@ -29,6 +29,7 @@ import {Props} from "../plugins/props.js"
 import {Size} from "../plugins/size.js";
 import {Initiator} from "../plugins/init.js";
 import {Position} from "../plugins/position.js";
+import {Serialize} from "../plugins/serialize.js";
 
 const defaultOptions = {
     uid: 'uid',
@@ -128,7 +129,8 @@ query.use({
     undef,
     iif,
     nvl,
-    coalesce
+    coalesce,
+    serialize: Serialize.serialize
 })
 
 Query.use({
