@@ -317,6 +317,7 @@ export const Events = {
         })
 
         return this.each(function(){
+
             this.dispatchEvent(e)
         })
     },

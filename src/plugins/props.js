@@ -76,9 +76,5 @@ export const Props = {
                 el.innerHTML = ""
             }
         })
-    },
-
-    clear: function(){
-        return this.empty()
     }
 }

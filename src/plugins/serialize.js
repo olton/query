@@ -66,7 +66,7 @@ export const Serialize = {
         return q
     },
 
-    serialize(o, joinWith){
+    serialize(o, joinWith ){
         let result
 
         if (o.nodeName && o.nodeName === 'FORM') {
@@ -80,5 +80,15 @@ export const Serialize = {
         }
 
         return joinWith ? result.join(joinWith) : result
+    }
+}
+
+export const SerializeForm = {
+    serialize(joinWith){
+        const form = this[0]
+        if (!(form instanceof HTMLFormElement)) {
+            throw new Error(`You must call this function for form element!`)
+        }
+        return Serialize.serialize(form, joinWith)
     }
 }

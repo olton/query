@@ -10,9 +10,10 @@
 </head>
 <body>
     <div class="red" data-role="xxx"></div>
-    <div class="green"></div>
+    <div class="green">green</div>
     <form id="form">
         <input type="text" id="input">
+        <input type="checkbox" id="check">
     </form>
     <script src="../lib/query.js"></script>
     <script>
@@ -26,8 +27,10 @@
         // console.info($('.red').hasAttrs(['data-role', 'class']))
         // console.info($('.red').hasAttrs(['data-role', 'class', 'data-size']))
 
-        form = document.querySelector("#form")
-        console.log($(form))
+        //form = document.querySelector("#form")
+        //console.log($(form))
+
+        console.log($("#check").wrap($("<label>").addClass("switch")))
     </script>
 </body>
 </html>
