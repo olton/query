@@ -6,16 +6,19 @@
 </head>
 <body>
     <div>
-        <div class="day">1</div>
-        <div class="day">2</div>
-        <div class="day">3</div>
+        <div class="day1">1</div>
+        <div class="day2">2</div>
+        <div class="day3">3</div>
     </div>
     <script src="../lib/query.js"></script>
     <script>
-        const days = $(".day")
-        $.each(days, (i, el)=>{
-            console.log(i, el, $(el).index())
-        })
+        const days1 = $(".day1, .day2")
+        const days2 = $(".day2")
+        const days3 = $(".day3")
+
+        console.log(days1.is(days2))
+        console.log(days1.in(days1))
+
     </script>
 </body>
 </html>

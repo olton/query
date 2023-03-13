@@ -122,6 +122,16 @@ export const Contains = {
         return result
     },
 
+    in(el){
+        let inSet = false
+        this.each(function(){
+            if ($(this).is(el)) {
+                inSet = true
+            }
+        })
+        return inSet
+    },
+
     same(o){
         let result = true
         const _o = $(o)
