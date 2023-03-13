@@ -122,12 +122,10 @@ export const Contains = {
         return result
     },
 
-    in(el){
+    in(/*Query*/ set){
         let inSet = false
         this.each(function(){
-            if ($(this).is(el)) {
-                inSet = true
-            }
+            if (!inSet && set.is(this)) inSet = true
         })
         return inSet
     },
