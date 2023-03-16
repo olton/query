@@ -341,6 +341,6 @@ eventMap.forEach(function( name ) {
     Events[ name ] = function( sel, fn, opt ) {
         return arguments.length > 0 ?
             this.on( name, sel, fn, opt ) :
-            this.fire( name, opt.detail )
+            this.fire( name )
     }
 })
