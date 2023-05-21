@@ -14,10 +14,10 @@ export const Contains = {
 
         if (undef(sel)) {
             el = this[0]
-        } else if (isArrayLike(sel)) {
-            el = sel[0]
         } else if (typeof sel === "string") {
             el = $(sel)[0]
+        } else if (isArrayLike(sel)) {
+            el = sel[0]
         } else {
             el = undefined
         }
