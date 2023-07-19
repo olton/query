@@ -14,9 +14,9 @@
         $("#button").on("click", () => {
             alert("Button clicked!")
         })
-        $("#div-button").on("click", "button", () => {
+        $("#div-button").on("click touchstart", "button", () => {
             alert("Button inside a div clicked!")
-            $("#button").off("click")
+            $("#button").off("click touchstart")
         })
         $(window).on("resize", function(){
             $("#div-button").fire("resize")

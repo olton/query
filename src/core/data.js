@@ -11,10 +11,10 @@ export class DataSet {
         const instanceMap = this._dataset.get(element)
 
         // TODO check this
-        if (!instanceMap.has(key) && instanceMap.size !== 0) {
+        //if (!instanceMap.has(key) && instanceMap.size !== 0) {
             //console.error(`Query doesn't allow more than one instance per element. Bound instance: ${Array.from(instanceMap.keys())[0]}.`)
-            return
-        }
+            //return
+        //}
 
         instanceMap.set(key, data)
     }
