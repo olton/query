@@ -2,17 +2,38 @@ import {undef} from "../helpers/undef.js";
 import {bool} from "../helpers/bool.js";
 
 export const Position = {
-    offset: function(){
+    offset: function(val){
         if (this.length === 0) return
 
-        const el = this[0]
-        return {
-            top: el.offsetTop,
-            left: el.offsetLeft,
-            height: el.offsetHeight,
-            width: el.offsetWidth,
-            parent: el.offsetParent
+        if (undef(val)) {
+            if (this.length === 0) return undefined;
+            const rect = this[0].getBoundingClientRect();
+            return {
+                top: rect.top + scrollY,
+                left: rect.left + scrollX
+            };
         }
+
+        return this.each(function(){ //?
+            const el = $(this)
+            let top = val.top, left = val.left
+            const position = getComputedStyle(this).position
+            const offset = el.offset();
+
+            if (position === "static") {
+                el.css("position", "relative");
+            }
+
+            if (["absolute", "fixed"].indexOf(position) === -1) {
+                top = top - offset.top;
+                left = left - offset.left;
+            }
+
+            el.css({
+                top: top,
+                left: left
+            });
+        });
     },
 
     position: function(margin){
