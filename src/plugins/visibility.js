@@ -18,7 +18,7 @@ export const Visibility = {
     hide(cb){
         return this.each((_, el) => {
             const displayState = getComputedStyle(el, null)['display']
-            $(el).data('display-state', el.style.display)
+            $(el).data('display-state', displayState)
             el.style.display = 'none';
             if (typeof cb === "function") {
                 cb.apply(el, [el])
