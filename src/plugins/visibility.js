@@ -68,5 +68,17 @@ export const Visibility = {
                 cb.apply(el, [el])
             }
         })
+    },
+
+    disable(){
+        return this.each((_, el)=>{
+            $(el).attr("disabled", "disabled")
+        })
+    },
+
+    enable(){
+        return this.each((_, el)=>{
+            $(el).removeAttr("disabled")
+        })
     }
 }
