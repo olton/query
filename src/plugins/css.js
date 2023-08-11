@@ -65,9 +65,11 @@ export const Css = {
     css: function(key, val){
         const that = this
 
-        key = key || 'all'
+        if (undef(key)) {
+            return this
+        }
 
-        if (typeof key === "string" && !val) {
+        if (typeof key === "string" && undef(val)) {
             return  this.style(key)
         }
 

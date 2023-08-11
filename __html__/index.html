@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="red" data-role="xxx"></div>
-    <div class="green">green</div>
+    <div class="green" style="width: 100px;">green</div>
     <form id="form">
         <input type="text" id="input">
         <input type="checkbox" id="check">
@@ -31,6 +31,7 @@
         //console.log($(form))
 
         console.log($("#check").wrap($("<label>").addClass("switch")))
+        $(".green").css()
     </script>
 </body>
 </html>
